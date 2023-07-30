@@ -3,6 +3,7 @@ const submitBtn = document.getElementById("submitBtn");
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
+
   const url = "http://localhost:4000/setup";
   const data = {
     APIKEY: document.getElementById("apiKey").value,

@@ -15,7 +15,7 @@ const handleRefresh = async (req, res) => {
       phone_No: foundUser.phone_No,
     };
     const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "300s",
+      expiresIn: "7200s",
     });
 
     res

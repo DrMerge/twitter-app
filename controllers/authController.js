@@ -22,7 +22,7 @@ const handleAuth = async (req, res) => {
       phone_No: foundUser.phone_No,
     };
     const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "300s",
+      expiresIn: "7200s",
     });
     const refreshToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: 24 * 60 * 60,
@@ -36,7 +36,7 @@ const handleAuth = async (req, res) => {
       .status(200)
       .cookie("act", accessToken)
       .cookie("rft", refreshToken)
-      .json({ url: "welcome to Users page" });
+      .json({ url: "http://localhost:4000/home" });
   } catch (err) {
     console.log(err);
   }
