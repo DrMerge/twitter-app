@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailor Prompt</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 40px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .prompt-form {
+        margin-top: 30px;
+      }
+
+      .prompt-form input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+        max-width: 100%;
+      }
+
+      .prompt-form input[type="submit"] {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .prompt-form input[type="submit"]:hover {
+        background-color: #0b7dda;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tailor Prompt</h1>
+
+    <form class="prompt-form" onsubmit="return false;">
+      <input type="text" id="promptText" placeholder="Enter your prompt..." />
+      <input type="submit" value="Submit" onclick="submitPrompt()" />
+    </form>
+
+    <script>
+      function submitPrompt() {
+        const promptText = document.getElementById("promptText").value;
+        // You can add your code here to handle the submitted prompt
+        console.log("Submitted Prompt:", promptText);
+      }
+    </script>
+  </body>
+</html>
