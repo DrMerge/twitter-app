@@ -3,7 +3,6 @@ const submitBtn = document.getElementById("submitBtn");
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
-
   const url = "http://localhost:4000/setup";
   const data = {
     APIKEY: document.getElementById("apiKey").value,
@@ -20,7 +19,11 @@ submitBtn.onclick = async (e) => {
     body: JSON.stringify(data),
   })
     .then((response) => {
-      return response.json(); // Return the parsed JSON data
+      if (!response.ok) {
+        window.location.replace("http://localhost:4000/auth");
+      } else {
+        return response.json(); // Return the parsed JSON data
+      }
     })
     .then((result) => {
       const redirectUrl = result.url;

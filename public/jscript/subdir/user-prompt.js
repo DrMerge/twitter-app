@@ -15,6 +15,10 @@ submitBtn.onclick = async (e) => {
     },
     body: JSON.stringify(data),
   })
+    .then((response) => {
+      if (!response.ok)
+        return window.location.replace("http://localhost:4000/auth");
+    })
     .then(() => {
       window.location.replace("http://localhost:4000/home");
     })

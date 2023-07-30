@@ -18,7 +18,13 @@ botToggle.onclick = () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ botStatus: botStatus }),
-  }).catch((error) => {
-    console.error("Error:", error);
-  });
+  })
+    .then((response) => {
+      if (!response.ok)
+        return window.location.replace("http://localhost:4000/auth");
+    })
+
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 };
