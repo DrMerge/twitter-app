@@ -93,6 +93,8 @@ const handlePrompt = async (req, res) => {
 
     const { prompt } = req.body;
 
+    if (!prompt) return res.status(403).send("Please enter a valid prompt");
+
     const foundUser = await UsersDB.findOne({ refreshToken: token });
 
     if (!foundUser) return res.status(404).json({ message: "User not found" });

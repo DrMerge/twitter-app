@@ -95,6 +95,9 @@ const handleSetup = async (req, res) => {
 
     const { APIKEY, APISECRET, ACCESSTOKEN, ACCESSSECRET } = req.body;
 
+    if (!APIKEY || !APISECRET || !ACCESSTOKEN || ACCESSSECRET)
+      return res.status(403).send("Please enter all fields");
+
     const foundUser = await UsersDB.findOne({ refreshToken: token });
 
     if (!foundUser) return res.status(400).json({ message: "fuck you" });
