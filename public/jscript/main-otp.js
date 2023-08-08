@@ -3,7 +3,7 @@ const submitBtn = document.getElementById("submitBtn");
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = "http://localhost:4000/otp";
+  const url = "http://3.82.249.45:4000/otp";
   const otp = document.getElementById("otp").value;
 
   fetch(url, {

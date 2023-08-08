@@ -10,7 +10,7 @@ botToggle.onclick = () => {
 
   console.log(botStatus);
 
-  const url = "http://localhost:4000/botData";
+  const url = "http://3.82.249.45:4000/botData";
 
   fetch(url, {
     method: "POST",
@@ -21,7 +21,7 @@ botToggle.onclick = () => {
   })
     .then((response) => {
       if (!response.ok)
-        return window.location.replace("http://localhost:4000/auth");
+        return window.location.replace("http://3.82.249.45:4000/auth");
     })
 
     .catch((error) => {

@@ -52,7 +52,7 @@ const handleRegister = async (req, res) => {
 
         //   maxAge: 24 * 60 * 60 * 1000,
       })
-      .json({ url: `http://localhost:4000/otp` });
+      .json({ url: `http://3.82.249.45:4000/otp` });
   } catch (err) {
     console.log(err);
   }

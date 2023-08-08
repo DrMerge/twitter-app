@@ -21,11 +21,16 @@ const handleAuth = async (req, res) => {
       username: foundUser.username,
       phone_No: foundUser.phone_No,
     };
+    
+    const accessTokenExpiration = "2h"; // 2 hours
+    const refreshTokenExpiration = "1d"; // 1 day
+
     const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "7200s",
+      expiresIn: accessTokenExpiration,
     });
+
     const refreshToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: 24 * 60 * 60,
+      expiresIn: refreshTokenExpiration,
     });
 
     foundUser.refreshToken = refreshToken;
@@ -36,9 +41,10 @@ const handleAuth = async (req, res) => {
       .status(200)
       .cookie("act", accessToken)
       .cookie("rft", refreshToken)
-      .json({ url: "http://localhost:4000/home" });
+      .json({ url: "http://3.82.249.45:4000/" });
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 

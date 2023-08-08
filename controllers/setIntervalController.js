@@ -8,7 +8,8 @@ const handleSendPage = async (req, res) => {
 
     if (!foundUser) return res.status(400).json({ message: "fuck you" });
 
-    res.status(200).send(`<!DOCTYPE html>
+    res.status(200).send(`
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,6 +26,10 @@ const handleSendPage = async (req, res) => {
       font-size: 32px;
     }
 
+    h2 {
+      font-size: 24px;
+    }
+
     form {
       display: flex;
       flex-direction: column;
@@ -37,7 +42,8 @@ const handleSendPage = async (req, res) => {
       margin-top: 20px;
     }
 
-    input {
+    input,
+    select {
       padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
@@ -62,50 +68,49 @@ const handleSendPage = async (req, res) => {
   </style>
 </head>
 <body>
-  <h1>Twitter API Credentials</h1>
-  <h2>${foundUser.username} please enter Your Twitter credentials</h2>
+  <h1>CURRENT INTERVAL SET AS: ${foundUser.tweetInterval} milliseconds</h1>
+  <h2>${foundUser.username} please enter Tweet Interval</h2>
 
   <form>
-    <label for="apiKey">API Key:</label>
-    <input type="text" id="apiKey" required>
+    <label for="interval">Tweet Interval:</label>
+    <input type="number" id="interval" required>
 
-    <label for="apiSecret">API Secret:</label>
-    <input type="text" id="apiSecret" required>
-
-    <label for="accessToken">Access Token:</label>
-    <input type="text" id="accessToken" required>
-
-    <label for="accessTokenSecret">Access Token Secret:</label>
-    <input type="text" id="accessTokenSecret" required>
+    <label for="unit">Select Unit:</label>
+    <select id="unit">
+   
+      <option value="minutes">Minutes</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+    </select><br>
+    <p id='error'><p>
 
     <input type="submit" value="Submit" id="submitBtn">
   </form>
-  <script src="/jscript/subdir/user-setup.js"></script>
+  <script src="/jscript/subdir/tweet-interval.js"></script>
 </body>
 </html>
+
 `);
   } catch (err) {
     console.log(err);
   }
 };
 
-const handleSetup = async (req, res) => {
+const handleInterval= async (req, res) => {
   try {
     const token = req.cookies.rft;
 
-    const { APIKEY, APISECRET, ACCESSTOKEN, ACCESSSECRET } = req.body;
+    const {  interval } = req.body;
 
-    if (!APIKEY || !APISECRET || !ACCESSTOKEN || !ACCESSSECRET)
+    if (!interval)
       return res.status(403).send("Please enter all fields");
 
     const foundUser = await UsersDB.findOne({ refreshToken: token });
 
     if (!foundUser) return res.status(400).json({ message: "fuck you" });
 
-    foundUser.APIKEY = APIKEY;
-    foundUser.APISECRET = APISECRET;
-    foundUser.ACCESSTOKEN = ACCESSTOKEN;
-    foundUser.ACCESSSECRET = ACCESSSECRET;
+    foundUser.tweetInterval= interval
+ 
 
     const result = await foundUser.save();
 
@@ -117,4 +122,4 @@ const handleSetup = async (req, res) => {
   }
 };
 
-module.exports = { handleSetup, handleSendPage };
+module.exports = { handleInterval, handleSendPage };

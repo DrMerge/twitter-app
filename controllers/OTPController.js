@@ -29,7 +29,7 @@ const otpAUTH = async (req, res) => {
 
             await user.save();
             console.log("\n Verification status: " + verification_check.status);
-            res.status(200).json({ url: "http://localhost:4000/auth" });
+            res.status(200).json({ url: "http://3.82.249.45:4000/auth" });
           });
       }
     );

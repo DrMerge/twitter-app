@@ -17,22 +17,31 @@ const displayHome = async (req, res) => {
 
     res.status(200).send(
       `
-    
-    <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to Bot Company</title>
+    <!-- Add Google Fonts link for attractive typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Montserrat', Arial, sans-serif;
         text-align: center;
         padding: 40px;
+        line-height: 1.6;
       }
 
       h1 {
-        font-size: 32px;
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 20px;
       }
 
       .bot-button {
@@ -65,20 +74,39 @@ const displayHome = async (req, res) => {
       .bot-links a:hover {
         text-decoration: underline;
       }
+
+      /* Media query for iPhones */
+      @media screen and (max-width: 768px) {
+        body {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+
+        .bot-button {
+          font-size: 20px;
+          padding: 10px 20px;
+        }
+      }
     </style>
   </head>
   <body>
     <h1>Welcome to TwibO, ${foundUser.username}: Your trusted Social Media Partner</h1>
-    <p>Twibo is a Twitter bot that helps you make a total of 10 tweets per day <P>It makes use of the GPT 3 AI model to generate these tweets</P> Navigate to the setup page, generate your API keys and satrt using Twib today to grow your account</p>
+    <p>Twibo is a Twitter bot that helps you make a max total of 50 tweets per day. It makes use of the GPT 3 AI model to generate these tweets. Navigate to the setup page, generate your API keys, and start using Twib today to grow your account.</p>
 
-<h1>CP: ${cp}</h1>
+    <h1>CP: ${cp}</h1>
     <button class="bot-button" id="botToggle">${botToggle}</button>
 
     <div class="bot-links">
-      <a href="http://localhost:4000/setup">Setup Bot</a>
-      <a href="http://localhost:4000/prompt">Tailor Prompt</a>
-      
+      <a href="http://3.82.249.45:4000/setup">Setup Bot</a>
+      <a href="http://3.82.249.45:4000/prompt">Tailor Prompt</a>
+      <a href="http://3.82.249.45:4000/interval">Set Tweets Interval</a>
+      <a href="http://3.82.249.45:4000/display-tweets">See Previous Tweets</a>
+
       <a href="#">Buy CP</a>
+      <a href="http://3.82.249.45:4000/logout">Logout</a>
     </div>
 
     <script src="/jscript/subdir/user-home.js"></script>
@@ -88,9 +116,7 @@ const displayHome = async (req, res) => {
     
     
     
-    
-    
-    
+  
     
     `
     );

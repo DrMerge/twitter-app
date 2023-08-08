@@ -21,10 +21,11 @@ app.use("/auth", require("./routes/auth"));
 app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
 app.use(verifyJWT);
-app.use("/home", require("./routes/user_routes/home"));
+app.use("/", require("./routes/user_routes/home"));
 app.use("/setup", require("./routes/user_routes/botSetup"));
 app.use("/prompt", require("./routes/user_routes/prompt"));
 app.use("/display-tweets", require("./routes/user_routes/displayTweets"));
+app.use("/interval", require("./routes/user_routes/setInterval"));
 
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");

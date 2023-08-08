@@ -1,4 +1,5 @@
 const UsersDB = require("../models/userModel");
+const path= require('path')
 
 const handleLogout = async (req, res) => {
   try {
@@ -18,7 +19,7 @@ const handleLogout = async (req, res) => {
       .status(200)
       .cookie("act", accessToken)
 
-      .json({ url: "return to login page" });
+      .sendFile(path.join(__dirname,'..','views','auth.html'))
   } catch (err) {
     console.log(err);
   }

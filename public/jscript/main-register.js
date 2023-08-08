@@ -3,7 +3,7 @@ const registerBtn = document.getElementById("registerBtn");
 registerBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = "http://localhost:4000/register";
+  const url = "http://3.82.249.45:4000/register";
   const data = {
     username: document.getElementById("username").value,
     email: document.getElementById("email").value,

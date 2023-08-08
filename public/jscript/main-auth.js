@@ -3,7 +3,7 @@ const submitBtn = document.getElementById("submitBtn");
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = "http://localhost:4000/auth";
+  const url = "http://3.82.249.45:4000/auth";
   const data = {
     username_phoneNo: document.getElementById("username_phoneNo").value,
     password: document.getElementById("password").value,
