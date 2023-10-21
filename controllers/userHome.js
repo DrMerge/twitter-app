@@ -1,4 +1,5 @@
 const UsersDB = require("../models/userModel");
+const url = require("../config/url");
 
 const displayHome = async (req, res) => {
   try {
@@ -100,13 +101,13 @@ const displayHome = async (req, res) => {
     <button class="bot-button" id="botToggle">${botToggle}</button>
 
     <div class="bot-links">
-      <a href="http://3.82.249.45:4000/setup">Setup Bot</a>
-      <a href="http://3.82.249.45:4000/prompt">Tailor Prompt</a>
-      <a href="http://3.82.249.45:4000/interval">Set Tweets Interval</a>
-      <a href="http://3.82.249.45:4000/display-tweets">See Previous Tweets</a>
+      <a href="http://${url}:4000/setup">Setup Bot</a>
+      <a href="http://${url}:4000/prompt">Tailor Prompt</a>
+      <a href="http://${url}:4000/interval">Set Tweets Interval</a>
+      <a href="http://${url}:4000/display-tweets">See Previous Tweets</a>
 
       <a href="#">Buy CP</a>
-      <a href="http://3.82.249.45:4000/logout">Logout</a>
+      <a href="http://${url}:4000/logout">Logout</a>
     </div>
 
     <script src="/jscript/subdir/user-home.js"></script>

@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const UsersDB = require("../models/userModel");
+const url = require("../config/url");
 const client = require("twilio")(
   process.env.ACCOUNT_SID,
   process.env.AUTH_TOKEN
@@ -29,7 +30,7 @@ const otpAUTH = async (req, res) => {
 
             await user.save();
             console.log("\n Verification status: " + verification_check.status);
-            res.status(200).json({ url: "http://3.82.249.45:4000/auth" });
+            res.status(200).json({ url: `http://${url}:4000/auth` });
           });
       }
     );

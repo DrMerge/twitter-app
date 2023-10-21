@@ -1,9 +1,10 @@
 const submitBtn = document.getElementById("submitBtn");
+const url = require("../../../config/url");
 
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = "http://3.82.249.45:4000/prompt";
+  const url = `http://${url}:4000/prompt`;
   const data = {
     prompt: document.getElementById("prompt").value,
   };
@@ -17,10 +18,10 @@ submitBtn.onclick = async (e) => {
   })
     .then((response) => {
       if (!response.ok)
-        return window.location.replace("http://3.82.249.45:4000/auth");
+        return window.location.replace(`http://${url}:4000/auth`);
     })
     .then(() => {
-      window.location.replace("http://3.82.249.45:4000/prompt");
+      window.location.replace(`http://${url}:4000/prompt`);
     })
     .catch((error) => {
       console.error("Error:", error);

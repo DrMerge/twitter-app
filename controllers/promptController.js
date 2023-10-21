@@ -1,4 +1,5 @@
 const UsersDB = require("../models/userModel");
+const url = require("../config/url");
 
 const receivePrompt = async (req, res) => {
   try {
