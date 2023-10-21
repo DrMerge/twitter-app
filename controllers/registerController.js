@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const path = require("path");
 const UsersDB = require("../models/userModel");
+const url = require("../config/url");
 const client = require("twilio")(
   process.env.ACCOUNT_SID,
   process.env.AUTH_TOKEN
@@ -52,7 +53,7 @@ const handleRegister = async (req, res) => {
 
         //   maxAge: 24 * 60 * 60 * 1000,
       })
-      .json({ url: `http://3.82.249.45:4000/otp` });
+      .json({ url: `http://${url}:4000/otp` });
   } catch (err) {
     console.log(err);
   }

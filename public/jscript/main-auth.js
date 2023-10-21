@@ -1,9 +1,10 @@
 const submitBtn = document.getElementById("submitBtn");
+const url1 = require("../../config/url");
 
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = "http://3.82.249.45:4000/auth";
+  const url = `http://${url1}:4000/auth`;
   const data = {
     username_phoneNo: document.getElementById("username_phoneNo").value,
     password: document.getElementById("password").value,

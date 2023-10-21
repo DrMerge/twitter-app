@@ -1,9 +1,9 @@
 const registerBtn = document.getElementById("registerBtn");
-
+const url1 = require("../../config/url");
 registerBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = "http://3.82.249.45:4000/register";
+  const url = ` http://${url1}:4000/register`;
   const data = {
     username: document.getElementById("username").value,
     email: document.getElementById("email").value,

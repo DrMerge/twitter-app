@@ -1,5 +1,9 @@
 const UsersDB = require("../models/userModel");
+<<<<<<< HEAD
 const url= require("../config/url")
+=======
+const url = require("../config/url");
+>>>>>>> d1106c42c70c5aa033f5c38b4b93d8d69b6cae4f
 
 const handleSendPage = async (req, res) => {
   try {
@@ -128,7 +132,7 @@ const handleSetup = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Setup complete", url: "http://3.82.249.45:4000/" });
+      .json({ message: "Setup complete", url: `http://${url}:4000/` });
   } catch (err) {
     console.log(err);
   }

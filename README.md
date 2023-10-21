@@ -17,7 +17,7 @@ This is a simple Twitter App Software as a Service (SAAS) application that allow
 3. Set up a MongoDB database and configure the connection string in the `config/dbConnect.js` file.
 4. Obtain API keys from OpenAI and Twitter developer accounts and configure them in the appropriate files.
 5. Run the application: `npm start`
-6. Access the app at `http://localhost:3000`
+6. Access the app at `http://localhost:4000`
 
 ## Usage
 
@@ -38,7 +38,7 @@ This is a simple Twitter App Software as a Service (SAAS) application that allow
 
 ## License
 
-This project is licensed under the MIT License. You are free to use, modify, and distribute this software as per the terms of the license.
+ You are free to use, modify, and distribute this software as per the terms of the agreement.
 
 ## Contributing
 
@@ -51,4 +51,4 @@ Contributions are welcome! If you find any bugs or want to add new features, fee
 
 ---
 
-Replace the placeholders (e.g., `your-username`, `http://localhost:3000`, etc.) with actual information specific to your application. Make sure to provide accurate and detailed instructions for setting up and using the application. Additionally, include any necessary legal notices, privacy policy, or terms of service if applicable to your SAAS application.
+Replace the placeholders (e.g., `your-username`, `http://localhost:4000`, etc.) with actual information specific to your application. Make sure to provide accurate and detailed instructions for setting up and using the application. Additionally, include any necessary legal notices, privacy policy, or terms of service if applicable to your SAAS application.
