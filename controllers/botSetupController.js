@@ -1,9 +1,5 @@
 const UsersDB = require("../models/userModel");
-<<<<<<< HEAD
 const url= require("../config/url")
-=======
-const url = require("../config/url");
->>>>>>> d1106c42c70c5aa033f5c38b4b93d8d69b6cae4f
 
 const handleSendPage = async (req, res) => {
   try {
@@ -11,7 +7,7 @@ const handleSendPage = async (req, res) => {
 
     const foundUser = await UsersDB.findOne({ refreshToken: token });
 
-    if (!foundUser) return res.status(400).json({ message: "fuck you" });
+    if (!foundUser) return res.status(400).json({ message: "Please login" });
 
     res.status(200).send(`
     <!DOCTYPE html>
@@ -132,7 +128,7 @@ const handleSetup = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Setup complete", url: `http://${url}:4000/` });
+      .json({ message: "Setup complete", url: `http://${url}/` });
   } catch (err) {
     console.log(err);
   }

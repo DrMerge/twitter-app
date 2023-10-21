@@ -1,4 +1,4 @@
-const url = require("../../../config/url");
+const url = ""
 const botToggle = document.getElementById("botToggle");
 let botOn;
 
@@ -11,7 +11,7 @@ botToggle.onclick = () => {
 
   console.log(botStatus);
 
-  const url = `http://${url}:4000/botData`;
+  const url = `http://34.205.33.147:4000/botData`;
 
   fetch(url, {
     method: "POST",
@@ -22,9 +22,8 @@ botToggle.onclick = () => {
   })
     .then((response) => {
       if (!response.ok)
-        return window.location.replace(`http://${url}:4000/auth`);
+        return window.location.replace(`http://34.205.33.147:4000/auth`);
     })
-
     .catch((error) => {
       console.error("Error:", error);
     });
