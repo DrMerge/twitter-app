@@ -1,4 +1,5 @@
 const UsersDB = require("../models/userModel");
+const url= require("../config/url")
 
 const handleSendPage = async (req, res) => {
   try {
@@ -8,7 +9,8 @@ const handleSendPage = async (req, res) => {
 
     if (!foundUser) return res.status(400).json({ message: "fuck you" });
 
-    res.status(200).send(`<!DOCTYPE html>
+    res.status(200).send(`
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,6 +27,16 @@ const handleSendPage = async (req, res) => {
       font-size: 32px;
     }
 
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
     form {
       display: flex;
       flex-direction: column;
@@ -34,7 +46,8 @@ const handleSendPage = async (req, res) => {
 
     label {
       font-size: 20px;
-      margin-top: 20px;
+      margin-top: 15px;
+      text-align: left;
     }
 
     input {
@@ -63,8 +76,11 @@ const handleSendPage = async (req, res) => {
 </head>
 <body>
   <h1>Twitter API Credentials</h1>
-  <h2>${foundUser.username} please enter Your Twitter credentials</h2>
-
+  <h2>${foundUser.username}, please enter your Twitter credentials</h2>
+  <p>Follow these steps to get your keys and tokens <a href="https://www.youtube.com/watch?v=rIyRrUAsaok&t=11s"  target="_blank">Get your keys and  tokens</a> </p>
+  <p style="font-size: 16px; margin-bottom: 10px; color:  	#00FFFF;">Note! Under App permissions in your developer portal select "Read and Write" option.</p>
+  <p>Your keys and tokens are encrypted and they change from time to time, so they are safe.</p>
+   
   <form>
     <label for="apiKey">API Key:</label>
     <input type="text" id="apiKey" required>
@@ -83,6 +99,7 @@ const handleSendPage = async (req, res) => {
   <script src="/jscript/subdir/user-setup.js"></script>
 </body>
 </html>
+
 `);
   } catch (err) {
     console.log(err);

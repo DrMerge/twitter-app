@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const path = require("path");
 const UsersDB = require("../models/userModel");
+const url= require("../config/url")
 
 const handleAuth = async (req, res) => {
   try {
@@ -41,7 +42,7 @@ const handleAuth = async (req, res) => {
       .status(200)
       .cookie("act", accessToken)
       .cookie("rft", refreshToken)
-      .json({ url: "http://3.82.249.45:4000/" });
+      .json({ url: `http://${url}/` });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal Server Error" });
