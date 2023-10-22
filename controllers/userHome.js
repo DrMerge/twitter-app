@@ -29,6 +29,7 @@ const displayHome = async (req, res) => {
     <style>
       body {
         background-color: black;
+        color: white;
         font-family: 'Montserrat', Arial, sans-serif;
         text-align: center;
         padding: 40px;

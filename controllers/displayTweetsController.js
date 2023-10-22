@@ -34,6 +34,7 @@ const handleDisplayTweet = async (req, res) => {
         /* CSS styles for the tweet container */
         body {
           background-color: black;
+          color: white;
           font-family: Arial, sans-serif;
         }
 
