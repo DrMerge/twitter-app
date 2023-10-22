@@ -21,6 +21,7 @@ const receivePrompt = async (req, res) => {
   <title>ENTER PROMPT Credentials</title>
   <style>
     body {
+      background-color: black;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px;

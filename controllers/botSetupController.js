@@ -18,6 +18,7 @@ const handleSendPage = async (req, res) => {
   <title>Twitter API Credentials</title>
   <style>
     body {
+      background-color: black;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px;

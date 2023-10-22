@@ -28,6 +28,7 @@ const displayHome = async (req, res) => {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
       body {
+        background-color: black;
         font-family: 'Montserrat', Arial, sans-serif;
         text-align: center;
         padding: 40px;
