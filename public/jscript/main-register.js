@@ -1,5 +1,5 @@
 const registerBtn = document.getElementById("registerBtn");
-const url1 = require("../../config/url");
+const url1 = "34.205.33.147"
 registerBtn.onclick = async (e) => {
   e.preventDefault();
 
@@ -22,6 +22,7 @@ registerBtn.onclick = async (e) => {
       return response.json(); // Return the parsed JSON data
     })
     .then((result) => {
+      if (result.message==='User not found')return window.location.replace(url);
       const redirectUrl = result.url;
       console.log(redirectUrl);
       window.location.replace(redirectUrl); // Use the correct variable name
