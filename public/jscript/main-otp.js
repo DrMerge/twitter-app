@@ -42,15 +42,14 @@ submitBtn.onclick = async (e) => {
           // Decrement the time left
           durationInSeconds--;
 
-          // If the timer reaches 0, stop the timer and perform an action (e.g., enable a resend button)
+          // If the timer reaches 0, stop the timer and replace the text with a "Get OTP" button
           if (durationInSeconds < 0) {
             clearInterval(timer);
-            // You can add your action here
+            createGetOTPButton();
           }
         }
 
         // Call the updateTimer function every second
-        updateTimer();
         const timer = setInterval(updateTimer, 1000);
       } else {
         const redirectUrl = result.url;
@@ -61,3 +60,20 @@ submitBtn.onclick = async (e) => {
       console.error("Error:", error);
     });
 };
+
+function createGetOTPButton() {
+  // Create a "Get OTP" button
+  const getOtpButton = document.createElement("button");
+  getOtpButton.textContent = "Get OTP";
+  getOtpButton.id = "getOtpButton";
+
+  // Add an event listener to the button for handling the "Get OTP" action
+  getOtpButton.addEventListener("click", function () {
+    // Replace with your logic for getting a new OTP
+    alert("Get OTP button clicked!");
+  });
+
+  // Replace the countdown text with the "Get OTP" button
+  msg.innerHTML = ""; // Clear the existing content
+  msg.appendChild(getOtpButton);
+}
