@@ -12,7 +12,7 @@ const UserSchema = new Schema({
   },
   phone_NoVerfied: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   email: {
     type: String,

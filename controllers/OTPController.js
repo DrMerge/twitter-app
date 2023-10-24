@@ -25,7 +25,7 @@ const otpAUTH = async (req, res) => {
             username: ID.username,
             email: ID.email,
             phone_No: ID.phone_No,
-            password: ID.hashedPwd,
+            password: ID.password,
             refreshToken: "",
           });
 
