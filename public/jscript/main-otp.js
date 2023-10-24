@@ -38,9 +38,9 @@ submitBtn.onclick = async (e) => {
         });
 
         body.appendChild(resendBtn);
-      }
+      }else{
       const redirectUrl = result.url;
-      window.location.replace(redirectUrl);
+      window.location.replace(redirectUrl);}
     })
     .catch((error) => {
       console.error("Error:", error);
