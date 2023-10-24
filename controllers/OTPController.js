@@ -22,7 +22,7 @@ const otpAUTH = async (req, res) => {
           .verificationChecks.create({ to: `+234${phone_No}`, code: otp })
           .then(async (verification_check) => {
             if (verification_check.status != "approved")
-              return res.status(400).send("Please Retry OTP");
+              return res.status(400).json({ error: "Please Retry OTP" });
 
             const user = await UsersDB.findOne({ phone_No: phone_No });
 
