@@ -1,5 +1,5 @@
 const submitBtn = document.getElementById("submitBtn");
-const url1 = require("../../config/url");
+const url1 = "34.205.33.147"
 
 submitBtn.onclick = async (e) => {
   e.preventDefault();
@@ -18,6 +18,7 @@ submitBtn.onclick = async (e) => {
       return response.json();
     })
     .then((result) => {
+      if (result.message==='User not found')return window.location.replace(url);
       const redirectUrl = result.url;
       window.location.replace(redirectUrl);
     })

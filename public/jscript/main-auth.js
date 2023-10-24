@@ -17,11 +17,14 @@ submitBtn.onclick = async (e) => {
     body: JSON.stringify(data),
   })
     .then((response) => {
+     
       return response.json();
     })
     .then((result) => {
-      const url = result.url;
-      window.location.replace(url);
+      if (result.message==='User not found')return window.location.replace(url);
+    
+      const url1 = result.url;
+      window.location.replace(url1);
     })
     .catch((error) => {
       console.error("Error:", error);
