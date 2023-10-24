@@ -26,17 +26,14 @@ const handleRegister = async (req, res) => {
 
     const hashedPwd = await bcrypt.hash(password, 10);
 
-    const result = await UsersDB.create({
+    const ID = {
       username: username,
       email: email,
       phone_No: phone_No,
       password: hashedPwd,
       refreshToken: "",
-    });
-    const encryptedPhone_No = jwt.sign(
-      phone_No,
-      process.env.UTILITY_ENCRYPTION
-    );
+    };
+    const encryptedID = jwt.sign(ID, process.env.UTILITY_ENCRYPTION);
 
     client.verify.v2
       .services(process.env.SERVICEID)
@@ -47,7 +44,7 @@ const handleRegister = async (req, res) => {
 
     res
       .status(200)
-      .cookie("Verf_ID", encryptedPhone_No, {
+      .cookie("Verf_ID", encryptedID, {
         httpOnly: true,
         //   sameSite: "None",
 
