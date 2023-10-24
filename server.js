@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use("/botData", require("./routes/botData"));
 app.use("/register", require("./routes/register"));
 app.use("/otp", require("./routes/otp"));
+app.use("/retry", require("./routes/retry"));
 app.use("/auth", require("./routes/auth"));
 app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
