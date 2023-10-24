@@ -1,5 +1,5 @@
 const UsersDB = require("../models/userModel");
-const url= require("../config/url")
+const url = require("../config/url");
 
 const handleSendPage = async (req, res) => {
   try {
@@ -126,9 +126,7 @@ const handleSetup = async (req, res) => {
 
     const result = await foundUser.save();
 
-    res
-      .status(200)
-      .json({ message: "Setup complete", url: `http://${url}/` });
+    res.status(200).json({ message: "Setup complete", url: `http://${url}/` });
   } catch (err) {
     console.log(err);
   }
