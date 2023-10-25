@@ -68,9 +68,13 @@ function createGetOTPButton() {
   getOtpButton.id = "getOtpButton";
 
   // Add an event listener to the button for handling the "Get OTP" action
-  getOtpButton.addEventListener("click", function () {
-    // Replace with your logic for getting a new OTP
-    alert("Get OTP button clicked!");
+  getOtpButton.addEventListener("click", () => {
+    fetch("http://localhost:4000/retry").then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    });
   });
 
   // Replace the countdown text with the "Get OTP" button

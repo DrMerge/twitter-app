@@ -14,8 +14,8 @@ const handleRetry = async (req, res) => {
       }
 
       const phoneNo = `+234${ID.phone_No}`;
-
-      await client.verify
+      console.log("retry" + phoneNo);
+      await client.verify.v2
         .services(process.env.SERVICEID)
         .verifications.create({
           to: phoneNo,
