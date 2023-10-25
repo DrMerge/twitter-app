@@ -1,4 +1,3 @@
-const url = ""
 const botToggle = document.getElementById("botToggle");
 let botOn;
 
@@ -11,7 +10,14 @@ botToggle.onclick = () => {
 
   console.log(botStatus);
 
-  const url = `http://34.205.33.147:4000/botData`;
+  const url = `http://localhost:4000/botData`;
+
+  // Add the code to dynamically change the button color based on botOn state
+  if (botOn) {
+    botToggle.style.backgroundColor = "green"; // Set color when the bot is running
+  } else {
+    botToggle.style.backgroundColor = "red"; // Set color when the bot is away
+  }
 
   fetch(url, {
     method: "POST",
@@ -22,7 +28,7 @@ botToggle.onclick = () => {
   })
     .then((response) => {
       if (!response.ok)
-        return window.location.replace(`http://34.205.33.147:4000/auth`);
+        return window.location.replace(`http://localhost:4000/auth`);
     })
     .catch((error) => {
       console.error("Error:", error);

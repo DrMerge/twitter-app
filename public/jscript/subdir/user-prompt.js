@@ -1,10 +1,10 @@
 const submitBtn = document.getElementById("submitBtn");
-const url1 = "34.205.33.147"
+const url1 = "34.205.33.147";
 
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = `http://${url1}:4000/prompt`;
+  const url = `http://localhost:4000/prompt`;
   const data = {
     prompt: document.getElementById("prompt").value,
   };
@@ -18,10 +18,10 @@ submitBtn.onclick = async (e) => {
   })
     .then((response) => {
       if (!response.ok)
-        return window.location.replace(`http://${url1}:4000/auth`);
+        return window.location.replace(`http://localhost:4000/auth`);
     })
     .then(() => {
-      window.location.replace(`http://${url1}:4000/prompt`);
+      window.location.replace(`http://localhost:4000/prompt`);
     })
     .catch((error) => {
       console.error("Error:", error);

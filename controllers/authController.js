@@ -5,7 +5,6 @@ const UsersDB = require("../models/userModel");
 
 const url = require("../config/url");
 
-
 const handleAuth = async (req, res) => {
   try {
     const { username_phoneNo, password } = req.body;
@@ -45,8 +44,7 @@ const handleAuth = async (req, res) => {
       .cookie("act", accessToken)
       .cookie("rft", refreshToken)
 
-      .json({ url: `http://${url}:4000/` });
-
+      .json({ url: `http://localhost:4000/` });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal Server Error" });

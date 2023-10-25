@@ -1,9 +1,9 @@
 const registerBtn = document.getElementById("registerBtn");
-const url1 = "34.205.33.147"
+const url1 = "34.205.33.147";
 registerBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = ` http://${url1}:4000/register`;
+  const url = ` http://localhost:4000/register`;
   const data = {
     username: document.getElementById("username").value,
     email: document.getElementById("email").value,
@@ -22,7 +22,8 @@ registerBtn.onclick = async (e) => {
       return response.json(); // Return the parsed JSON data
     })
     .then((result) => {
-      if (result.message==='User not found')return window.location.replace(url);
+      if (result.message === "User not found")
+        return window.location.replace(url);
       const redirectUrl = result.url;
       console.log(redirectUrl);
       window.location.replace(redirectUrl); // Use the correct variable name

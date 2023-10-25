@@ -117,7 +117,7 @@ const handleInterval = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Setup complete", url: `http://${url}:4000/` });
+      .json({ message: "Setup complete", url: `http://localhost:4000/` });
   } catch (err) {
     console.log(err);
   }

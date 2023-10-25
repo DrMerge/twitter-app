@@ -1,6 +1,6 @@
 const UsersDB = require("../models/userModel");
 const url = require("../config/url");
-
+let botCol;
 const displayHome = async (req, res) => {
   try {
     const token = req.cookies.rft;
@@ -14,86 +14,127 @@ const displayHome = async (req, res) => {
     const botStatus = foundUser.botOn;
     const botToggle = botStatus ? "BOT IS RUNNING " : "BOT IS AWAY";
 
+    if (botStatus) {
+      botCol = "green";
+    } else {
+      botCol = "red";
+    }
+
     const tweets = foundUser.tweet;
 
     res.status(200).send(
       `
-      <!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Bot Company</title>
+    <title>Welcome to TwibO, ${foundUser.username}: Your trusted Social Media Partner</title>
     <!-- Add Google Fonts link for attractive typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-      body {
-        background-color: black;
-        color: white;
-        font-family: 'Montserrat', Arial, sans-serif;
-        text-align: center;
-        padding: 40px;
-        line-height: 1.6;
-      }
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
-      h1 {
-        font-size: 36px;
-        font-weight: 600;
-        margin-bottom: 20px;
-      }
+    <!-- ... (previous HTML code) ... -->
 
-      p {
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-align: center;
+    padding: 40px;
+    line-height: 1.6;
+  }
 
-      .bot-button {
-        display: inline-block;
-        background-color: #2196f3;
-        color: white;
-        font-size: 24px;
-        padding: 15px 30px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-      }
+  h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
 
-      .bot-button:hover {
-        background-color: #0b7dda;
-      }
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
 
-      .bot-links {
-        margin-top: 30px;
-      }
+  .bot-button {
+    background-color: ${botCol};
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%; /* Makes it a circle */
+    width: 200px; /* Adjust the width to make it bigger and circular */
+    height: 200px; /* Adjust the height to make it bigger and circular */
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center vertically */
+    cursor: pointer;
+  }
 
-      .bot-links a {
-        display: block;
-        margin: 10px;
-        text-decoration: none;
-        color: #2196f3;
-        font-size: 20px;
-      }
+  
+  .bot-running-button {
+    background-color: #2196f3;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%; /* Makes it a circle */
+    width: 200px; /* Adjust the width to make it bigger and circular */
+    height: 200px; /* Adjust the height to make it bigger and circular */
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center vertically */
+    cursor: pointer;
+  }
 
-      .bot-links a:hover {
-        text-decoration: underline;
-      }
+  .bot-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 30px auto;
+  }
 
-      /* Media query for iPhones */
-      @media screen and (max-width: 768px) {
-        body {
-          padding: 20px;
-        }
+  .bot-links a {
+    display: block;
+    background-color: #2196f3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+  }
 
-        h1 {
-          font-size: 30px;
-        }
+  .bot-links a:hover {
+    background-color: #0b7dda;
+  }
 
-        .bot-button {
-          font-size: 20px;
-          padding: 10px 20px;
-        }
-      }
-    </style>
+  /* Media query for iPhones */
+  @media screen and (max-width: 768px) {
+    body {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    .bot-button {
+      font-size: 20px;
+      width: 100px;
+      height: 100px;
+    }
+  }
+</style>
+
+
+
   </head>
   <body>
     <h1>Welcome to TwibO, ${foundUser.username}: Your trusted Social Media Partner</h1>
@@ -103,13 +144,12 @@ const displayHome = async (req, res) => {
     <button class="bot-button" id="botToggle">${botToggle}</button>
 
     <div class="bot-links">
-      <a href="http://${url}:4000/setup">Setup Bot</a>
-      <a href="http://${url}:4000/prompt">Tailor Prompt</a>
-      <a href="http://${url}:4000/interval">Set Tweets Interval</a>
-      <a href="http://${url}:4000/display-tweets">See Previous Tweets</a>
-
+      <a href="http://localhost:4000/setup">Setup Bot</a>
+      <a href="http://localhost:4000/prompt">Tailor Prompt</a>
+      <a href="http://localhost:4000/interval">Set Tweets Interval</a>
+      <a href="http://localhost:4000/display-tweets">See Previous Tweets</a>
       <a href="#">Buy CP</a>
-      <a href="http://${url}:4000/logout">Logout</a>
+      <a href="http://localhost:4000/logout">Logout</a>
     </div>
 
     <script src="/jscript/subdir/user-home.js"></script>

@@ -5,7 +5,7 @@ const msg = document.getElementById("msg");
 submitBtn.onclick = async (e) => {
   e.preventDefault();
 
-  const url = `http://${url1}:4000/otp`;
+  const url = `http://localhost:4000/otp`;
   const otp = document.getElementById("otp").value;
 
   fetch(url, {

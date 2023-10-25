@@ -35,7 +35,7 @@ const handleRegister = async (req, res) => {
     };
     // console.log(ID)
     const encryptedID = jwt.sign(ID, process.env.UTILITY_ENCRYPTION);
-// console.log(encryptedID)
+    // console.log(encryptedID)
     client.verify.v2
       .services(process.env.SERVICEID)
       .verifications.create({ to: `+234${phone_No}`, channel: `whatsapp` })
@@ -51,7 +51,7 @@ const handleRegister = async (req, res) => {
 
         //   maxAge: 24 * 60 * 60 * 1000,
       })
-      .json({ url: `http://${url}:4000/otp` });
+      .json({ url: `http://localhost:4000/otp` });
   } catch (err) {
     console.log(err);
   }
