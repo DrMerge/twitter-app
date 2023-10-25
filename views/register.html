@@ -19,6 +19,14 @@
         justify-content: center;
       }
 
+      #preloader {
+        background: #000 url(nime.gif) no-repeat center center;
+        height: 199vh;
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+      }
+
       h1 {
         font-size: 36px;
         font-weight: 600;
@@ -74,6 +82,8 @@
     </style>
   </head>
   <body>
+    <div id="preloader"></div>
+
     <h1>Register</h1>
 
     <form>
@@ -98,6 +108,7 @@
     <h3>Already have an account?</h3>
     <br />
     <a href="http://localhost:4000//auth">Sign In</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <script src="/jscript/main-register.js"></script>
   </body>
 </html>
