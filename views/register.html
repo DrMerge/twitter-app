@@ -19,12 +19,22 @@
         justify-content: center;
       }
 
-      #preloader {
-        background: #000 url(nime.gif) no-repeat center center;
-        height: 199vh;
-        width: 100%;
+      .preloader {
         position: fixed;
-        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Adjust the z-index to be above your content */
+      }
+
+      /* Preloader image */
+      .preloader img {
+        width: 99%; /* Adjust the width and height as needed */
       }
 
       h1 {
@@ -82,7 +92,7 @@
     </style>
   </head>
   <body>
-    <div id="preloader"></div>
+    <div class="preloader"><img src="/assets/nime.gif"" alt="Preloader" /></div>
 
     <h1>Register</h1>
 

@@ -2,15 +2,15 @@ const registerBtn = document.getElementById("registerBtn");
 const url1 = "34.205.33.147";
 // Specify the path to your JSON animation file
 
-var animationContainer2 = document.getElementById("lottie-container-2");
-var animationData2 = {
-  container: animationContainer2,
-  renderer: "svg",
-  loop: false,
-  autoplay: true,
-  path: "ash.json",
-};
-var animation2 = lottie.loadAnimation(animationData2);
+// Simulate loading your website content
+// After your content is loaded, you can hide the preloader.
+window.addEventListener("load", function () {
+  // Select the preloader element
+  const preloader = document.querySelector(".preloader");
+
+  // Hide the preloader (you can use CSS transitions for a smoother effect)
+  preloader.style.display = "none";
+});
 
 registerBtn.onclick = async (e) => {
   e.preventDefault();
